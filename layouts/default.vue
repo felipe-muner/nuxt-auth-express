@@ -61,6 +61,10 @@ export default {
       clipped: true,
       drawer: true,
       fixed: false,
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: "Vuetify.js",
       items: [
         {
           icon: "mdi-apps",
@@ -71,12 +75,23 @@ export default {
           icon: "mdi-chart-bubble",
           title: "Inspire",
           to: "/inspire"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Login",
+          to: "/login"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Register",
+          to: "/register"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "About",
+          to: "/about"
         }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: "Vuetify.js"
+      ]
     };
   }
 };

@@ -1,14 +1,7 @@
 <template>
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
-      <div class="text-center"></div>
-      <v-btn color="primary" nuxt to="/inspire">
-        Continue
-      </v-btn>
-      <NuxtLink to="/inspire">
-        inspire
-      </NuxtLink>
-      <h1>qwewq</h1>
+      <div class="text-center">index</div>
     </v-flex>
   </v-layout>
 </template>
@@ -18,10 +11,6 @@
 // import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
-  transition: "default",
-  components: {
-    // Logo,
-    // VuetifyLogo
-  }
+  transition: "default"
 };
 </script>
