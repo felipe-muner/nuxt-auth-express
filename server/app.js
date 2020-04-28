@@ -4,7 +4,7 @@ var cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const indexRouter = require("./routes/index");
-const authenticationRouter = require("./routes/authentication");
+const userRouter = require("./routes/users");
 
 var app = express();
 
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/", indexRouter);
-app.use("/authentication", authenticationRouter);
+app.use("/users", userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
