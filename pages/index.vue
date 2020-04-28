@@ -5,6 +5,10 @@
       <v-btn color="primary" nuxt to="/inspire">
         Continue
       </v-btn>
+      <NuxtLink to="/inspire">
+        inspire
+      </NuxtLink>
+      <h1>qwewq</h1>
     </v-flex>
   </v-layout>
 </template>
@@ -14,6 +18,7 @@
 // import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
+  transition: "bounce",
   components: {
     // Logo,
     // VuetifyLogo
