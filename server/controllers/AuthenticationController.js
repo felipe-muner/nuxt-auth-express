@@ -63,6 +63,7 @@ module.exports = {
   },
 
   getUser(req, res) {
+    console.log(req.headers);
     res.send({
       user: null
     });
