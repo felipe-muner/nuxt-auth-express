@@ -47,13 +47,30 @@ export default {
     middleware: ["auth"]
   },
   auth: {
-    // Options
+    strategies: {
+      local: {
+        autoFetchUser: false,
+        endpoints: {
+          login: {
+            url: "/login",
+            method: "post",
+            propertyName: "token"
+          },
+          logout: { url: "/logout", method: "post" },
+          user: { url: "/user", method: "get", propertyName: "user" }
+        }
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+      }
+    }
   },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: "http://localhost:8081/"
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

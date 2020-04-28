@@ -52,7 +52,7 @@
       {{ fixed }}
       {{ miniVariant }}
       <hr />
-      {{$auth.loggedIn}}
+      {{ this.$store.state }}
       <v-container>
         <nuxt />
       </v-container>
@@ -85,16 +85,6 @@ export default {
           icon: "mdi-chart-bubble",
           title: "Inspire",
           to: "/inspire"
-        },
-        {
-          icon: "mdi-chart-bubble",
-          title: "Login",
-          to: "/login"
-        },
-        {
-          icon: "mdi-chart-bubble",
-          title: "Register",
-          to: "/register"
         },
         {
           icon: "mdi-chart-bubble",

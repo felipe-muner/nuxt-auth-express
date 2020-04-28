@@ -23,7 +23,9 @@ export default {
   },
   methods: {
     submitForm(userInfo) {
-      console.log(userInfo);
+      this.$auth.loginWith("local", { data: userInfo }).then(response => {
+        this.$auth.setUser(response.data.user);
+      });
     }
   }
 };
