@@ -10,4 +10,8 @@ export default function({ $axios, redirect }) {
     console.log(config);
     console.log("Coming back from response to");
   });
+
+  $axios.onError(error => {
+    console.log(error);
+  });
 }
