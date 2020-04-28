@@ -56,7 +56,6 @@
 
 <script>
 export default {
-  transition: "bounce",
   data() {
     return {
       clipped: true,
@@ -82,3 +81,4 @@ export default {
   }
 };
 </script>
+<style></style>

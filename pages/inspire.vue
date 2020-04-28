@@ -19,6 +19,6 @@
 
 <script>
 export default {
-  transition: "bounce"
+  transition: "default"
 };
 </script>

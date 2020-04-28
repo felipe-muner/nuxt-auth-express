@@ -18,7 +18,7 @@
 // import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
-  transition: "bounce",
+  transition: "default",
   components: {
     // Logo,
     // VuetifyLogo
