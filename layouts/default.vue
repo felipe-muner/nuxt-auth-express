@@ -28,7 +28,9 @@
         <v-icon>mdi-application</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
-      <v-btn class="ml-5" color="info" v-if="$auth.user && $auth.user.UserID === 1">Admin Area</v-btn>
+      <nuxt-link to="/admin">
+        <v-btn class="ml-5" color="info" v-if="$auth.user && $auth.user.UserID === 1">Admin Area</v-btn>
+      </nuxt-link>
       <v-spacer />
       <div v-if="$auth.loggedIn">
         <v-btn icon>
@@ -46,12 +48,6 @@
       </div>
     </v-app-bar>
     <v-content>
-      {{ clipped }}
-      {{ drawer }}
-      {{ fixed }}
-      {{ miniVariant }}
-      <hr />
-      {{ this.$store.state }}
       <v-container>
         <nuxt />
         <SnackBarLogin />
@@ -100,6 +96,11 @@ export default {
           icon: "mdi-chart-bubble",
           title: "Admin",
           to: "/admin"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Sindec",
+          to: "/sindec"
         }
       ]
     };
