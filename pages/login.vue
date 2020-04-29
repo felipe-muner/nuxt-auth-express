@@ -11,6 +11,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { mapMutations } from "vuex";
 import UserAuthForm from "~/components/UserAuthForm.vue";
 
 export default {
@@ -22,12 +23,17 @@ export default {
     return {};
   },
   methods: {
-    submitForm(userInfo) {
-      this.$auth.loginWith("local", { data: userInfo });
-      this.$store.dispatch("snackbar/setSnackbar", {
-        text: `Hello ${userInfo.Email}`,
-        showing: true
-      });
+    ...mapMutations({
+      setSnack: "snackbar/setSnack"
+    }),
+    async submitForm(userInfo) {
+      try {
+        await this.$auth.loginWith("local", { data: userInfo });
+        this.setSnack("login ok");
+        this.$router.push("/");
+      } catch (error) {
+        this.setSnack("login not ok");
+      }
     }
   }
 };

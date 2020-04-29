@@ -1,27 +1,31 @@
+
 <template>
-  <div class="text-center ma-2">
-    <v-snackbar :value="showing" class="mb-10">
-      {{ snackbarText }}
-      <v-btn color="pink" text @click="hideSnackbar()">Close</v-btn>
-    </v-snackbar>
-  </div>
+  <v-snackbar v-model="show">
+    {{message}}
+    <v-btn text color="accent" @click.native="show = false">Close</v-btn>
+  </v-snackbar>
 </template>
+
 <script>
-import { mapState } from "vuex";
 export default {
-  computed: {
-    ...mapState({
-      snackbarText: state => state.snackbar.snackbarText,
-      showing: state => state.snackbar.showing
-    })
+  data() {
+    return {
+      show: false,
+      message: ""
+    };
   },
-  methods: {
-    hideSnackbar() {
-      this.$store.dispatch("snackbar/setSnackbar", {
-        text: "",
-        showing: false
-      });
-    }
+  created: function() {
+    this.$store.watch(
+      state => state.snackbar.snack,
+      () => {
+        const msg = this.$store.state.snackbar.snack;
+        if (msg !== "") {
+          this.show = true;
+          this.message = this.$store.state.snackbar.snack;
+          this.$store.commit("snackbar/setSnack", "");
+        }
+      }
+    );
   }
 };
 </script>
