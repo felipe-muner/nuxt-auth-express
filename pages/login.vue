@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import UserAuthForm from "~/components/UserAuthForm.vue";
 
 export default {
@@ -23,6 +24,10 @@ export default {
   methods: {
     submitForm(userInfo) {
       this.$auth.loginWith("local", { data: userInfo });
+      this.$store.dispatch("snackbar/setSnackbar", {
+        text: `Hello ${userInfo.Email}`,
+        showing: true
+      });
     }
   }
 };

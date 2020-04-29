@@ -53,6 +53,7 @@
       {{ this.$store.state }}
       <v-container>
         <nuxt />
+        <SnackBarLogin />
       </v-container>
     </v-content>
 
@@ -63,7 +64,12 @@
 </template>
 
 <script>
+import SnackBarLogin from "~/components/SnackBarLogin";
+
 export default {
+  components: {
+    SnackBarLogin
+  },
   data() {
     return {
       clipped: true,
