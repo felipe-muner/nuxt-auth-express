@@ -44,9 +44,6 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/auth"
   ],
-  router: {
-    middleware: ["auth"]
-  },
   auth: {
     strategies: {
       local: {
@@ -56,7 +53,7 @@ export default {
             method: "post",
             propertyName: "token"
           },
-          logout: { url: "/logout", method: "post" },
+          logout: false,
           user: { url: "/user", method: "get", propertyName: "user" }
         }
         // tokenRequired: true,

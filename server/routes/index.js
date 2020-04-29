@@ -12,6 +12,8 @@ router.post("/login", AuthenticationController.login);
 
 router.post("/register", AuthenticationController.register);
 
-router.get("/user", AuthenticationController.getUser);
+router.get("/user", AuthenticationController.verifyUser);
+
+router.get("/logout", AuthenticationController.logout);
 
 module.exports = router;

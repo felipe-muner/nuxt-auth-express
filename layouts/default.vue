@@ -33,9 +33,7 @@
         <v-btn icon>
           <v-icon>mdi-menu</v-icon>
         </v-btn>
-        <nuxt-link to="/logout" class="ml-4">
-          <v-btn color="success">Logout</v-btn>
-        </nuxt-link>
+        <v-btn color="success" @click="$auth.logout()">Logout</v-btn>
       </div>
       <div v-else>
         <nuxt-link to="/login">

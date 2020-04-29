@@ -54,15 +54,14 @@ module.exports = {
       const userJson = user.toJSON();
       res.send({
         user: userJson,
-        token: jwtSignUser(userJson),
-        created
+        token: jwtSignUser(userJson)
       });
     } catch (error) {
       res.status(400).send({ error });
     }
   },
 
-  getUser(req, res) {
+  verifyUser(req, res) {
     try {
       jwt.verify(
         req.headers.authorization.split(" ")[1],
@@ -74,6 +73,10 @@ module.exports = {
     } catch (error) {
       return res.status(401).send({ error });
     }
+  },
+
+  logout(req, res) {
+    res.send({ logout: true });
   },
 
   async login(req, res) {

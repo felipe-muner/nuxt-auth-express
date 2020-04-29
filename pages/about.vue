@@ -11,7 +11,6 @@
 // import VuetifyLogo from "~/components/VuetifyLogo.vue";
 
 export default {
-  auth: false,
   transition: "default"
 };
 </script>

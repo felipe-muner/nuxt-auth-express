@@ -13,14 +13,14 @@
 import UserAuthForm from "~/components/UserAuthForm.vue";
 
 export default {
-  auth: false,
   transition: "default",
   components: {
     UserAuthForm
   },
   methods: {
-    submitForm(userInfo) {
-      console.log(userInfo);
+    async submitForm(userInfo) {
+      await this.$axios.post("/register", userInfo);
+      this.$auth.loginWith("local", { data: userInfo });
     }
   },
   data() {

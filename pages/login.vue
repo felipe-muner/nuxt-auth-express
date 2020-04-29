@@ -13,7 +13,6 @@
 import UserAuthForm from "~/components/UserAuthForm.vue";
 
 export default {
-  auth: false,
   transition: "default",
   components: {
     UserAuthForm
