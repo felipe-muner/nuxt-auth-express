@@ -7,3 +7,9 @@ export const mutations = {
     state.snack = snack;
   }
 };
+
+export const actions = {
+  setSnack({ commit }, payload) {
+    commit("setSnack", payload);
+  }
+};

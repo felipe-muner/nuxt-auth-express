@@ -28,12 +28,13 @@
         <v-icon>mdi-application</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
+      <v-btn class="ml-5" color="info" v-if="$auth.user && $auth.user.UserID === 1">Admin Area</v-btn>
       <v-spacer />
       <div v-if="$auth.loggedIn">
         <v-btn icon>
           <v-icon>mdi-menu</v-icon>
         </v-btn>
-        <v-btn color="success" @click="$auth.logout()">Logout</v-btn>
+        <v-btn color="error" @click="$auth.logout()">Logout</v-btn>
       </div>
       <div v-else>
         <nuxt-link to="/login">
@@ -94,6 +95,11 @@ export default {
           icon: "mdi-chart-bubble",
           title: "About",
           to: "/about"
+        },
+        {
+          icon: "mdi-chart-bubble",
+          title: "Admin",
+          to: "/admin"
         }
       ]
     };
