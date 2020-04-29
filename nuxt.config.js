@@ -50,7 +50,6 @@ export default {
   auth: {
     strategies: {
       local: {
-        autoFetchUser: false,
         endpoints: {
           login: {
             url: "/login",

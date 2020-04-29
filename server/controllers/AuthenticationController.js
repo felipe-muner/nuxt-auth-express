@@ -63,10 +63,17 @@ module.exports = {
   },
 
   getUser(req, res) {
-    console.log(req.headers);
-    res.send({
-      user: null
-    });
+    try {
+      jwt.verify(
+        req.headers.authorization.split(" ")[1],
+        config.authentication.jwtSecret,
+        function(err, decoded) {
+          return res.send({ user: decoded });
+        }
+      );
+    } catch (error) {
+      return res.status(401).send({ error });
+    }
   },
 
   async login(req, res) {
@@ -81,13 +88,10 @@ module.exports = {
       }
 
       const isPasswordValid = await user.comparePassword(Password);
-      if (!isPasswordValid)
-        return res.status(401).send({ auth: false, token: null });
+      if (!isPasswordValid) return res.status(401).send({ token: null });
 
       const userJson = user.toJSON();
       res.send({
-        auth: true,
-        user: userJson,
         token: jwtSignUser(userJson)
       });
     } catch (error) {
