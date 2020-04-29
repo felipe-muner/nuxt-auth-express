@@ -29,10 +29,10 @@ export default {
     async submitForm(userInfo) {
       try {
         await this.$auth.loginWith("local", { data: userInfo });
-        this.setSnack("login ok");
+        this.setSnack(`Hello, ${userInfo.Email}!`);
         this.$router.push("/");
       } catch (error) {
-        this.setSnack("login not ok");
+        this.setSnack("Something wrong, please contact the adm.");
       }
     }
   }

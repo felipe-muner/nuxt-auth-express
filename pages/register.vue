@@ -11,6 +11,7 @@
 
 <script>
 import UserAuthForm from "~/components/UserAuthForm.vue";
+import { mapMutations } from "vuex";
 
 export default {
   transition: "default",
@@ -18,9 +19,18 @@ export default {
     UserAuthForm
   },
   methods: {
+    ...mapMutations({
+      setSnack: "snackbar/setSnack"
+    }),
     async submitForm(userInfo) {
-      await this.$axios.post("/register", userInfo);
-      this.$auth.loginWith("local", { data: userInfo });
+      try {
+        await this.$axios.post("/register", userInfo);
+        this.$auth.loginWith("local", { data: userInfo });
+        this.setSnack(`Hello, ${userInfo.Email}!`);
+        this.$router.push("/");
+      } catch (error) {
+        this.setSnack("Something wrong, please contact the adm.");
+      }
     }
   },
   data() {
