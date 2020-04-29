@@ -10,7 +10,7 @@
       class="elevation-1"
     >
       <template v-slot:top>
-        <v-form action></v-form>
+        <FormSindec />
       </template>
       <template v-slot:item.estado="{ item }">
         <v-chip dark>{{ item.estado }}</v-chip>
@@ -23,8 +23,12 @@
 </template>
 
 <script>
+import FormSindec from "~/components/FormSindec";
 export default {
   transition: "default",
+  components: {
+    FormSindec
+  },
   data() {
     return {
       singleSelect: false,
