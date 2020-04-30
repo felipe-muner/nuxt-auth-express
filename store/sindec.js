@@ -1,25 +1,19 @@
 export const state = () => ({
-  SindecID: 3,
+  SindecID: 4,
   LinkID: 0,
   sindecs: [
-    // {
-    //   id: 1,
-    //   estado: "Rio de Janeiro",
-    //   uf: "RJ",
-    //   link: ["12331212", "1233112"]
-    // },
-    // {
-    //   id: 2,
-    //   estado: "Bahia",
-    //   uf: "BA",
-    //   link: [1]
-    // },
-    // {
-    //   id: 3,
-    //   estado: "Minas Gerais",
-    //   uf: "RJ",
-    //   link: [4, 5]
-    // }
+    {
+      estado: { id: 2, siga: "AL", nome: "Alagoas" },
+      uf: { id: 2, nome: "SP" },
+      link: [{ LinkID: 1, Link: "qwe" }],
+      SindecID: 3
+    },
+    {
+      estado: { id: 19, siga: "RJ", nome: "Rio de Janeiro" },
+      uf: { id: 1, nome: "RJ" },
+      link: [{ LinkID: 2, Link: "rio" }],
+      SindecID: 4
+    }
   ]
 });
 
@@ -39,6 +33,7 @@ export const mutations = {
         Link: payload.link
       }
     ];
+    // const newSindec = { text: payload.link[0].Link, value: payload };
     state.sindecs.push(payload);
   }
 };
