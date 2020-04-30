@@ -42,7 +42,7 @@
         ></v-text-field>
       </v-col>
       <v-col cols="2" middle>
-        <v-btn middle :disabled="!valid" color="success" class="mr-4" @click="save">Cadastrar</v-btn>
+        <v-btn middle :disabled="!valid" color="success" class="mr-4" @click="submit">Cadastrar</v-btn>
       </v-col>
     </v-row>
     {{sincobs}}
@@ -51,6 +51,7 @@
 
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data: () => ({
     sincobs: [],
@@ -97,9 +98,12 @@ export default {
   }),
 
   methods: {
-    save() {
+    ...mapActions({
+      save: "sindec/save"
+    }),
+    submit() {
       if (this.$refs.form.validate()) {
-        this.sincobs.push({
+        this.save({
           estado: this.estado,
           uf: this.uf,
           link: this.link

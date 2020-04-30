@@ -1,9 +1,10 @@
 <template>
   <v-flex xs12 sm12 md12>
+    {{sindecsFormatted}}
     <v-data-table
       v-model="selected"
       :headers="headers"
-      :items="sindecs"
+      :items="sindecsFormatted"
       item-key="id"
       show-select
       class="elevation-1"
@@ -12,10 +13,11 @@
         <FormSindec />
       </template>
       <template v-slot:item.estado="{ item }">
-        <v-chip dark>{{ item.estado }}</v-chip>
+        <v-chip dark>{{ item.estado.nome }}</v-chip>
       </template>
+      <template v-slot:item.uf="{ item }">{{ item.uf.nome }}</template>
       <template v-slot:item.link="{ item }">
-        <div v-for="(link, index) in item.link" :key="link">{{ item.link[index] }}</div>
+        <span v-for="(link, index) in item.link" :key="link">{{ item.link[index] }}</span>
       </template>
     </v-data-table>
   </v-flex>
@@ -24,6 +26,7 @@
 <script>
 import FormSindec from "~/components/FormSindec";
 import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 import { mapActions } from "vuex";
 
 export default {
@@ -34,15 +37,18 @@ export default {
   computed: {
     ...mapState({
       sindecs: state => state.sindec.sindecs
+    }),
+    ...mapGetters({
+      sindecsFormatted: "sindec/sindecsFormatted"
     })
   },
   methods: {
-    // ...mapMutations({
-    //   setSnack: "snackbar/setSnack"
-    // }),
-    ...mapActions({
-      add: "increment" // map `this.add()` to `this.$store.dispatch('increment')`
-    })
+    // ...mapActions({
+    //   save: "sindec/save"
+    // })
+    // ...mapActions({
+    //   add: "increment" // map `this.add()` to `this.$store.dispatch('increment')`
+    // })
   },
   data() {
     return {
