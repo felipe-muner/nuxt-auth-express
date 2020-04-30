@@ -1,11 +1,12 @@
 <template>
   <v-flex xs12 sm12 md12>
+    {{selected}}
     <v-data-table
       v-model="selected"
       :headers="headers"
-      :items="desserts"
+      :items="sincobs"
       :single-select="singleSelect"
-      item-key="name"
+      item-key="id"
       show-select
       class="elevation-1"
     >
@@ -43,11 +44,24 @@ export default {
         { text: "UF", value: "uf" },
         { text: "Link", value: "link" }
       ],
-      desserts: [
+      sincobs: [
         {
+          id: 1,
           estado: "Rio de Janeiro",
           uf: "RJ",
           link: [2, 3]
+        },
+        {
+          id: 2,
+          estado: "Bahia",
+          uf: "BA",
+          link: [1]
+        },
+        {
+          id: 3,
+          estado: "Minas Gerais",
+          uf: "RJ",
+          link: [4, 5]
         }
       ]
     };

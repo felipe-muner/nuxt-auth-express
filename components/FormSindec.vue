@@ -4,6 +4,7 @@
       <v-col cols="2">
         {{estado}}
         <v-select
+          autofocus
           v-model="estado"
           :items="estados"
           :rules="[v => !!v || 'Item is required']"
@@ -41,7 +42,7 @@
         ></v-text-field>
       </v-col>
       <v-col cols="2" middle>
-        <v-btn middle :disabled="!valid" color="success" class="mr-4" @click="validate">Cadastrar</v-btn>
+        <v-btn middle :disabled="!valid" color="success" class="mr-4" @click="save">Cadastrar</v-btn>
       </v-col>
     </v-row>
   </v-form>
@@ -51,6 +52,7 @@
 <script>
 export default {
   data: () => ({
+    sincobs: [],
     valid: true,
     estado: "",
     estados: [
@@ -94,14 +96,10 @@ export default {
   }),
 
   methods: {
-    validate() {
-      this.$refs.form.validate();
-    },
-    reset() {
-      this.$refs.form.reset();
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation();
+    save() {
+      if (this.$refs.form.validate()) {
+        alert("validou");
+      }
     }
   }
 };
