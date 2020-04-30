@@ -2,8 +2,8 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on }">
-        <v-btn v-on="on" class="mx-2" fab dark x-small color="error">
-          <v-icon dark>mdi-minus</v-icon>
+        <v-btn v-on="on" class="mx-2" fab dark small color="error">
+          <v-icon dark>mdi-delete-forever</v-icon>
         </v-btn>
       </template>
 
