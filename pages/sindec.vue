@@ -28,26 +28,26 @@
             <td>{{ item.estado.nome}}</td>
             <td>{{ item.uf.nome }}</td>
             <td>{{ item.link[0].Link }}</td>
-            <td>actions</td>
+            <td>
+              <v-row>
+                <EditSindec />
+                <ToggleActive />
+                <DeleteSindec />
+              </v-row>
+            </td>
           </tr>
         </tbody>
       </template>
     </v-data-table>
   </v-flex>
 </template>
-      <!-- <template v-slot:item.estado="{ item }">
-        <v-chip dark>{{ item.estado.nome }}</v-chip>
-      </template>
-      <template v-slot:item.uf="{ item }">{{ item.uf.nome }}</template>
-      <template v-slot:item.link="{ item }">
-        <span v-for="(link, index) in item.link" :key="link.LinkID">{{ item.link[index].Link }}</span>
-      </template>-->
-    </v-data-table>
-  </v-flex>
-</template>
 
 <script>
-import FormSindec from "~/components/FormSindec";
+import FormSindec from "~/components/sindec/FormSindec";
+import DeleteSindec from "~/components/sindec/DeleteSindec";
+import EditSindec from "~/components/sindec/EditSindec";
+import ToggleActive from "~/components/sindec/ToggleActive";
+
 import { mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { mapActions } from "vuex";
@@ -55,7 +55,10 @@ import { mapActions } from "vuex";
 export default {
   transition: "default",
   components: {
-    FormSindec
+    FormSindec,
+    DeleteSindec,
+    EditSindec,
+    ToggleActive
   },
   computed: {
     ...mapState({
@@ -82,7 +85,8 @@ export default {
           value: "estado.nome"
         },
         { text: "UF", value: "uf.nome" },
-        { text: "Link", value: "link[0].LinkID" }
+        { text: "Link", value: "link[0].LinkID" },
+        { text: "", value: "" }
       ]
     };
   }
