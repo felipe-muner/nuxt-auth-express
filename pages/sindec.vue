@@ -1,11 +1,13 @@
 <template>
   <v-flex xs12 sm12 md12>
     {{sindecsFormatted}}
+    <hr />
+    {{this.$store.state.sindec}}
     <v-data-table
       v-model="selected"
       :headers="headers"
       :items="sindecsFormatted"
-      item-key="id"
+      item-key="SindecID"
       show-select
       class="elevation-1"
     >
@@ -17,7 +19,7 @@
       </template>
       <template v-slot:item.uf="{ item }">{{ item.uf.nome }}</template>
       <template v-slot:item.link="{ item }">
-        <span v-for="(link, index) in item.link" :key="link">{{ item.link[index] }}</span>
+        <span v-for="(link, index) in item.link" :key="link.LinkID">{{ item.link[index].Link }}</span>
       </template>
     </v-data-table>
   </v-flex>

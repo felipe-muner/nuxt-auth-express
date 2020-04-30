@@ -32,13 +32,10 @@ export const getters = {
 
 export const mutations = {
   SAVE(state, payload) {
-    state.SindecID++;
-    state.LinkID++;
-
-    payload.SindecID = state.SindecID;
+    payload.SindecID = ++state.SindecID;
     payload.link = [
       {
-        LinkID: state.LinkID,
+        LinkID: ++state.LinkID,
         Link: payload.link
       }
     ];
