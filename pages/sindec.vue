@@ -1,11 +1,9 @@
 <template>
   <v-flex xs12 sm12 md12>
-    {{selected}}
     <v-data-table
       v-model="selected"
       :headers="headers"
-      :items="sincobs"
-      :single-select="singleSelect"
+      :items="sindecs"
       item-key="id"
       show-select
       class="elevation-1"
@@ -25,14 +23,29 @@
 
 <script>
 import FormSindec from "~/components/FormSindec";
+import { mapState } from "vuex";
+import { mapActions } from "vuex";
+
 export default {
   transition: "default",
   components: {
     FormSindec
   },
+  computed: {
+    ...mapState({
+      sindecs: state => state.sindec.sindecs
+    })
+  },
+  methods: {
+    // ...mapMutations({
+    //   setSnack: "snackbar/setSnack"
+    // }),
+    ...mapActions({
+      add: "increment" // map `this.add()` to `this.$store.dispatch('increment')`
+    })
+  },
   data() {
     return {
-      singleSelect: false,
       selected: [],
       headers: [
         {
@@ -43,26 +56,6 @@ export default {
         },
         { text: "UF", value: "uf" },
         { text: "Link", value: "link" }
-      ],
-      sincobs: [
-        {
-          id: 1,
-          estado: "Rio de Janeiro",
-          uf: "RJ",
-          link: [2, 3]
-        },
-        {
-          id: 2,
-          estado: "Bahia",
-          uf: "BA",
-          link: [1]
-        },
-        {
-          id: 3,
-          estado: "Minas Gerais",
-          uf: "RJ",
-          link: [4, 5]
-        }
       ]
     };
   }

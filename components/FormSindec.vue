@@ -3,22 +3,22 @@
     <v-row>
       <v-col cols="2">
         {{estado}}
-        <v-select
-          autofocus
+        <v-autocomplete
           v-model="estado"
           :items="estados"
           :rules="[v => !!v || 'Item is required']"
           label="Estado"
+          return-object
           item-text="nome"
           item-value="id"
           required
           dense
           outlined
-        ></v-select>
+        ></v-autocomplete>
       </v-col>
       <v-col cols="2">
         {{uf}}
-        <v-select
+        <v-autocomplete
           v-model="uf"
           :items="ufs"
           :rules="[v => !!v || 'Item is required']"
@@ -29,7 +29,7 @@
           required
           dense
           outlined
-        ></v-select>
+        ></v-autocomplete>
       </v-col>
       <v-col cols="6">
         <v-text-field
@@ -45,6 +45,7 @@
         <v-btn middle :disabled="!valid" color="success" class="mr-4" @click="save">Cadastrar</v-btn>
       </v-col>
     </v-row>
+    {{sincobs}}
   </v-form>
 </template>
 
@@ -98,7 +99,12 @@ export default {
   methods: {
     save() {
       if (this.$refs.form.validate()) {
-        alert("validou");
+        this.sincobs.push({
+          estado: this.estado,
+          uf: this.uf,
+          link: this.link
+        });
+        this.$refs.form.reset();
       }
     }
   }
