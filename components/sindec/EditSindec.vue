@@ -56,7 +56,7 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="1" class="pl-0">
-                <v-btn color="error" dark x-small fab>
+                <v-btn color="error" dark x-small fab @click="handleDeleteLink(l.LinkID)">
                   <v-icon dark>mdi-cancel</v-icon>
                 </v-btn>
               </v-col>
@@ -97,6 +97,14 @@ export default {
     handleUpdate() {
       this.dialog = false;
       this.updateSindec(this.item);
+    },
+    handleDeleteLink(linkID) {
+      this.deleteLink(linkID);
+      // debugger;
+      // this.editObject.link =
+      this.editObject.link = this.editObject.link.filter(li => {
+        return li.LinkID !== linkID;
+      });
     }
   },
   mounted() {

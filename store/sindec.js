@@ -90,7 +90,13 @@ export const mutations = {
     // var foundIndex = items.findIndex(x => x.id == item.id);
     // items[foundIndex] = item;
     console.log(payload);
-    console.log("editSindec");
+    console.log("update");
+  },
+  deleteLink(state, payload) {
+    state.sindecs = state.sindecs.map(row => {
+      row.link = row.link.filter(item => item.LinkID !== payload);
+      return row;
+    });
   }
 };
 
@@ -107,5 +113,8 @@ export const actions = {
   },
   updateSindec({ commit }, payload) {
     commit("updateSindec", payload);
+  },
+  deleteLink({ commit }, payload) {
+    commit("deleteLink", payload);
   }
 };

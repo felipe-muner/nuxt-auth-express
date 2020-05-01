@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{link.Active}}
     <v-switch :value="link.Active" class="mx-2" @click.native="toggleActivity(item, link)"></v-switch>
   </div>
 </template>
