@@ -1,13 +1,15 @@
 <template>
-  <v-switch v-model="active" class="mx-2" label="Mandatory"></v-switch>
+  <v-switch v-model="link.Active" class="mx-2"></v-switch>
 </template>
 
 <script>
 export default {
+  props: ["item", "link"],
   data() {
-    return {
-      active: true
-    };
+    return {};
+  },
+  created() {
+    console.log(this.link);
   }
 };
 </script>

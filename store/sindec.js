@@ -5,13 +5,16 @@ export const state = () => ({
     {
       estado: { id: 2, siga: "AL", nome: "Alagoas" },
       uf: { id: 2, nome: "SP" },
-      link: [{ LinkID: 1, Link: "qwe" }],
+      link: [
+        { LinkID: 1, Link: "link1", Active: true },
+        { LinkID: 2, Link: "link 2", Active: false }
+      ],
       SindecID: 3
     },
     {
       estado: { id: 19, siga: "RJ", nome: "Rio de Janeiro" },
       uf: { id: 1, nome: "RJ" },
-      link: [{ LinkID: 2, Link: "rio" }],
+      link: [{ LinkID: 3, Link: "rio", Active: true }],
       SindecID: 4
     }
   ]
@@ -30,11 +33,14 @@ export const mutations = {
     payload.link = [
       {
         LinkID: ++state.LinkID,
-        Link: payload.link
+        Link: payload.link,
+        Active: true
       }
     ];
-    // const newSindec = { text: payload.link[0].Link, value: payload };
     state.sindecs.push(payload);
+  },
+  TOGGLE_ACTIVITY(state, payload) {
+    state;
   }
 };
 
@@ -42,5 +48,9 @@ export const actions = {
   save({ commit }, payload) {
     console.log("save action" + payload);
     commit("SAVE", payload);
+  },
+  toggleActivity({ commit }, payload) {
+    console.log("toggleActivity" + payload);
+    commit("TOGGLE_ACTIVITY", payload);
   }
 };

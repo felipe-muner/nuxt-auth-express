@@ -1,6 +1,8 @@
 <template>
   <v-flex xs12 sm12 md12>
+    {{sindecsFormatted}}
     <v-data-table
+      dense
       v-model="selected"
       :headers="headers"
       :items="sindecsFormatted"
@@ -27,11 +29,27 @@
             </td>
             <td>{{ item.estado.nome}}</td>
             <td>{{ item.uf.nome }}</td>
-            <td>{{ item.link[0].Link }}</td>
+            <td>
+              <v-container fill-height fluid class="pa-0">
+                <v-row align="center" justify="center" v-for="link in item.link" :key="link.LinkID">
+                  <v-col class="pa-0" cols="1">
+                    <ToggleActive :item="item" :link="link" />
+                  </v-col>
+                  <v-col cols="11" align="left" justify="left">{{ link.Link }}</v-col>
+                </v-row>
+              </v-container>
+              <!-- <v-container>
+                <v-row v-for="link in item.link" :key="link.LinkID" fill-height fluid>
+                  <v-col>{{ link.Link }}</v-col>
+                  <v-col>
+                    <ToggleActive :active="true" />
+                  </v-col>
+                </v-row>
+              </v-container>-->
+            </td>
             <td>
               <v-row>
                 <EditSindec />
-                <ToggleActive />
                 <DeleteSindec />
               </v-row>
             </td>
@@ -61,17 +79,21 @@ export default {
     ToggleActive
   },
   computed: {
-    ...mapState({
-      sindecs: state => state.sindec.sindecs
-    }),
+    // ...mapState({
+    //   sindecs: state => state.sindec.sindecs
+    // }),
     ...mapGetters({
       sindecsFormatted: "sindec/sindecsFormatted"
     })
   },
   methods: {
-    // ...mapActions({
-    //   save: "sindec/save"
-    // })
+    changeActivity(item, linkId) {
+      console.log(item, linkId);
+      console.log("to aqui");
+    },
+    ...mapActions({
+      toggleActivity: "sindec/toggleActivity"
+    })
     // ...mapActions({
     //   add: "increment" // map `this.add()` to `this.$store.dispatch('increment')`
     // })
@@ -82,15 +104,24 @@ export default {
       headers: [
         {
           text: "Estado",
-          value: "estado.nome"
+          value: "estado.nome",
+          width: "20%"
         },
-        { text: "UF", value: "uf.nome" },
-        { text: "Link", value: "link[0].LinkID" },
-        { text: "", value: "" }
+        { text: "UF", value: "uf.nome", width: "10%" },
+        {
+          text: "Link",
+          value: "link[0].LinkID",
+          width: "50%",
+          sortable: false
+        },
+        { text: "", value: "", width: "20%", sortable: false }
       ]
     };
   }
 };
 </script>
 <style scoped>
+.btn-width {
+  width: 10%;
+}
 </style>
