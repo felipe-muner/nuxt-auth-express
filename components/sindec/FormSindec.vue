@@ -1,6 +1,5 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation class="ma-3">
-    -{{estados}}-
     <v-row>
       <v-col cols="2">
         {{estado}}

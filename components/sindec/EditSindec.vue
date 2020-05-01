@@ -9,21 +9,58 @@
 
       <v-card>
         <v-card-title class="headline grey lighten-2" primary-title>Edit Sindec</v-card-title>
-
         <v-card-text>
-          <div>
-            <span>Estado:</span>
-            <span>{{item.estado.nome}}</span>
-          </div>
-          <div>
-            <span>UF:</span>
-            <span>{{item.uf.nome}}</span>
-          </div>
-          <div>
-            <span>Link(s):</span>
-            <ul>
-              <li v-for="l in item.link" :key="l.LinkID">{{l.Link}}</li>
-            </ul>
+          {{editObject}}
+          <v-row>
+            <v-col>
+              <v-autocomplete
+                v-model="editObject.estado"
+                :items="estados"
+                :rules="[v => !!v || 'Item is required']"
+                label="Estado"
+                return-object
+                item-text="nome"
+                item-value="id"
+                required
+                dense
+                outlined
+              ></v-autocomplete>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-autocomplete
+                v-model="editObject.uf"
+                :items="ufs"
+                :rules="[v => !!v || 'Item is required']"
+                label="UF"
+                return-object
+                item-text="nome"
+                item-value="id"
+                required
+                dense
+                outlined
+              ></v-autocomplete>
+            </v-col>
+          </v-row>
+          <div v-for="l in editObject.link" :key="l.LinkID">
+            <v-row>
+              <v-col cols="11">
+                <v-text-field
+                  v-model="l.Link"
+                  :rules="[v => !!v || 'Item is required']"
+                  label="Link"
+                  required
+                  dense
+                  outlined
+                ></v-text-field>
+              </v-col>
+              <v-col cols="1" class="pl-0">
+                <v-btn color="error" dark x-small fab>
+                  <v-icon dark>mdi-cancel</v-icon>
+                </v-btn>
+              </v-col>
+            </v-row>
           </div>
         </v-card-text>
 
@@ -39,22 +76,33 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { mapActions } from "vuex";
 export default {
   props: ["item"],
   data() {
     return {
-      dialog: false
+      dialog: false,
+      editObject: {}
     };
+  },
+  computed: {
+    ...mapState("sindec", ["estados", "ufs"])
   },
   methods: {
     ...mapActions({
-      updateSindec: "sindec/updateSindec"
+      updateSindec: "sindec/updateSindec",
+      deleteLink: "sindec/deleteLink"
     }),
     handleUpdate() {
       this.dialog = false;
       this.updateSindec(this.item);
     }
+  },
+  mounted() {
+    // this.editObject = Object.assign({}, this.item);
+    // this.editObject = {...this.item}
+    this.editObject = JSON.parse(JSON.stringify(this.item));
   }
 };
 </script>
