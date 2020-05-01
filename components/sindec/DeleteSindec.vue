@@ -31,7 +31,7 @@
 
         <v-card-actions center>
           <v-spacer></v-spacer>
-          <v-btn color="error" @click="handleDelete">Yes, Delete it</v-btn>
+          <v-btn color="error" @click="handleDelete">Delete</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

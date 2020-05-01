@@ -70,9 +70,6 @@ export default {
     ToggleActive
   },
   computed: {
-    // ...mapState({
-    //   sindecs: state => state.sindec.sindecs
-    // }),
     ...mapGetters({
       sindecsFormatted: "sindec/sindecsFormatted"
     })
@@ -81,10 +78,10 @@ export default {
     changeActivity(item, linkId) {
       console.log(item, linkId);
       console.log("to aqui");
-    },
-    ...mapActions({
-      toggleActivity: "sindec/toggleActivity"
-    })
+    }
+    // ...mapActions({
+    //   toggleActivity: "sindec/toggleActivity"
+    // })
     // ...mapActions({
     //   add: "increment" // map `this.add()` to `this.$store.dispatch('increment')`
     // })

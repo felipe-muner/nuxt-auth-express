@@ -10,13 +10,28 @@
       <v-card>
         <v-card-title class="headline grey lighten-2" primary-title>Edit Sindec</v-card-title>
 
-        <v-card-text>edit.</v-card-text>
+        <v-card-text>
+          <div>
+            <span>Estado:</span>
+            <span>{{item.estado.nome}}</span>
+          </div>
+          <div>
+            <span>UF:</span>
+            <span>{{item.uf.nome}}</span>
+          </div>
+          <div>
+            <span>Link(s):</span>
+            <ul>
+              <li v-for="l in item.link" :key="l.LinkID">{{l.Link}}</li>
+            </ul>
+          </div>
+        </v-card-text>
 
         <v-divider></v-divider>
 
-        <v-card-actions>
+        <v-card-actions center>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="dialog = false">I accept</v-btn>
+          <v-btn color="warning" @click="handleUpdate">Update</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -24,11 +39,22 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
+  props: ["item"],
   data() {
     return {
       dialog: false
     };
+  },
+  methods: {
+    ...mapActions({
+      updateSindec: "sindec/updateSindec"
+    }),
+    handleUpdate() {
+      this.dialog = false;
+      this.updateSindec(this.item);
+    }
   }
 };
 </script>
