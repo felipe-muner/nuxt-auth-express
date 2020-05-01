@@ -1,10 +1,11 @@
 <template>
   <v-flex xs12 sm12 md12>
+    {{sindecs}}
     <v-data-table
       dense
       v-model="selected"
       :headers="headers"
-      :items="sindecsFormatted"
+      :items="sindecs"
       item-key="SindecID"
       class="elevation-1"
       show-select
@@ -70,9 +71,10 @@ export default {
     ToggleActive
   },
   computed: {
-    ...mapGetters({
-      sindecsFormatted: "sindec/sindecsFormatted"
-    })
+    ...mapState("sindec", ["sindecs"])
+    // ...mapGetters({
+    //   sindecsFormatted: "sindec/sindecsFormatted"
+    // })  NO USE
   },
   methods: {
     changeActivity(item, linkId) {
@@ -105,7 +107,8 @@ export default {
         { text: "", value: "", width: "20%", sortable: false }
       ]
     };
-  }
+  },
+  mounted() {}
 };
 </script>
 <style scoped>
