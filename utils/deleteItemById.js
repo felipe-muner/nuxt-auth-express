@@ -1,4 +1,4 @@
-let selectedItem = { LinkID: 3 };
+let selectedItem = { LinkID: 1 };
 
 let sindecs = [
   {
@@ -21,7 +21,6 @@ let sindecs = [
 function removeLinkObj(sindecs, selectedItem) {
   return sindecs.map(row => {
     row.link = row.link.filter(item => item.LinkID !== selectedItem.LinkID);
-
     return row;
   });
 }
