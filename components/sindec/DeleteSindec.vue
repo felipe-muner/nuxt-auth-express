@@ -10,13 +10,28 @@
       <v-card>
         <v-card-title class="headline grey lighten-2" primary-title>Delete Sindec</v-card-title>
 
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</v-card-text>
+        <v-card-text>
+          <div>
+            <span>Estado:</span>
+            <span>{{item.estado.nome}}</span>
+          </div>
+          <div>
+            <span>UF:</span>
+            <span>{{item.uf.nome}}</span>
+          </div>
+          <div>
+            <span>Link(s):</span>
+            <ul>
+              <li v-for="l in item.link" :key="l.LinkID">{{l.Link}}</li>
+            </ul>
+          </div>
+        </v-card-text>
 
         <v-divider></v-divider>
 
-        <v-card-actions>
+        <v-card-actions center>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="dialog = false">I accept</v-btn>
+          <v-btn color="error" @click="handleDelete">Yes, Delete it</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -24,11 +39,22 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
+  props: ["item"],
   data() {
     return {
       dialog: false
     };
+  },
+  methods: {
+    ...mapActions({
+      deleteSidenc: "sindec/deleteSindec"
+    }),
+    handleDelete() {
+      this.dialog = false;
+      this.deleteSidenc(this.item);
+    }
   }
 };
 </script>

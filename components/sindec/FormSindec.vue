@@ -45,7 +45,6 @@
         <v-btn middle :disabled="!valid" color="success" class="mr-4" @click="submit">Cadastrar</v-btn>
       </v-col>
     </v-row>
-    {{sincobs}}
   </v-form>
 </template>
 

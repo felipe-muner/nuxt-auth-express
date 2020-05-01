@@ -22,13 +22,12 @@ export const state = () => ({
 
 export const getters = {
   sindecsFormatted(state) {
-    console.log("getters sindecsFormatted");
     return state.sindecs;
   }
 };
 
 export const mutations = {
-  SAVE(state, payload) {
+  save(state, payload) {
     payload.SindecID = ++state.SindecID;
     payload.link = [
       {
@@ -39,18 +38,30 @@ export const mutations = {
     ];
     state.sindecs.push(payload);
   },
-  TOGGLE_ACTIVITY(state, payload) {
-    state;
+  toggleActivity(state, payload) {
+    console.log("123");
+    // for (let i = 0; i < state.sindecs.length; i++) {
+    //   for (let j = 0; j < state.sindecs[i].link.length; j++) {
+    //     if (state.sindecs[i].link[j].LinkID === payload.link.LinkID) {
+    //       state.sindecs[i].link[j].Active = !state.sindecs[i].link[j].Active;
+    //     }
+    //   }
+    // }
+  },
+  deleteSindec(state, payload) {
+    state.sindecs = state.sindecs.filter(s => s.SindecID !== payload.SindecID);
   }
 };
 
 export const actions = {
   save({ commit }, payload) {
     console.log("save action" + payload);
-    commit("SAVE", payload);
+    commit("save", payload);
   },
   toggleActivity({ commit }, payload) {
-    console.log("toggleActivity" + payload);
-    commit("TOGGLE_ACTIVITY", payload);
+    commit("toggleActivity", payload);
+  },
+  deleteSindec({ commit }, payload) {
+    commit("deleteSindec", payload);
   }
 };

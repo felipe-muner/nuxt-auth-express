@@ -1,6 +1,5 @@
 <template>
   <v-flex xs12 sm12 md12>
-    {{sindecsFormatted}}
     <v-data-table
       dense
       v-model="selected"
@@ -38,19 +37,11 @@
                   <v-col cols="11" align="left" justify="left">{{ link.Link }}</v-col>
                 </v-row>
               </v-container>
-              <!-- <v-container>
-                <v-row v-for="link in item.link" :key="link.LinkID" fill-height fluid>
-                  <v-col>{{ link.Link }}</v-col>
-                  <v-col>
-                    <ToggleActive :active="true" />
-                  </v-col>
-                </v-row>
-              </v-container>-->
             </td>
             <td>
               <v-row>
-                <EditSindec />
-                <DeleteSindec />
+                <EditSindec :item="item" />
+                <DeleteSindec :item="item" />
               </v-row>
             </td>
           </tr>
