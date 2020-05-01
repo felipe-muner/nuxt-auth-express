@@ -96,12 +96,10 @@ export default {
     }),
     handleUpdate() {
       this.dialog = false;
-      this.updateSindec(this.item);
+      this.updateSindec(this.editObject);
     },
     handleDeleteLink(linkID) {
       this.deleteLink(linkID);
-      // debugger;
-      // this.editObject.link =
       this.editObject.link = this.editObject.link.filter(li => {
         return li.LinkID !== linkID;
       });
