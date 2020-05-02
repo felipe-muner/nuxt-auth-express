@@ -1,6 +1,6 @@
 export const state = () => ({
   SindecID: 4,
-  LinkID: 0,
+  LinkID: 3,
   sindecs: [
     {
       SindecID: 3,
@@ -100,7 +100,21 @@ export const mutations = {
       row.link = row.link.filter(item => item.LinkID !== payload);
       return row;
     });
+  },
+  incrementLinkID(state, payload) {
+    state.LinkID = ++state.LinkID;
   }
+  // addLink(state, payload) { // changed to add straigth to the edited object because it will update the store after
+  //   state.sindecs
+  //     .find(s => s.SindecID === payload.editObject.SindecID)
+  //     .link.push({
+  //       LinkID: ++state.LinkID,
+  //       Link: payload.newLink,
+  //       Active: true
+  //     });
+  //   // payload.editObject;
+  //   console.log(state.sindecs);
+  // }
 };
 
 export const actions = {
@@ -118,5 +132,8 @@ export const actions = {
   },
   deleteLink({ commit }, payload) {
     commit("deleteLink", payload);
+  },
+  incrementLinkID({ commit }, payload) {
+    commit("incrementLinkID", payload);
   }
 };

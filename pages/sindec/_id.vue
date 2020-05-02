@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card>
-      <!-- {{sindecs}} -->
+      {{sindecs}}
       <v-card-title class="headline grey lighten-2" primary-title>Edit Sindec</v-card-title>
       <v-card-text>
         <!-- {{editObject}} -->
@@ -39,17 +39,10 @@
         </v-row>
         <v-row>
           <v-col cols="11">
-            <v-text-field
-              v-model="newLink"
-              :rules="[v => !!v || 'Item is required']"
-              label="New Link"
-              required
-              dense
-              outlined
-            ></v-text-field>
+            <v-text-field v-model="newLink" label="New Link" dense outlined></v-text-field>
           </v-col>
           <v-col cols="1" class="pl-0">
-            <v-btn color="success" dark x-small fab @click="addLink()">
+            <v-btn color="success" dark x-small fab @click="handleAddLink()">
               <v-icon dark>mdi-playlist-plus</v-icon>
             </v-btn>
           </v-col>
@@ -92,14 +85,18 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      editObject: {}
+      editObject: {},
+      newLink: ""
     };
   },
   computed: {
-    ...mapState("sindec", ["estados", "ufs", "sindecs"]),
+    ...mapState("sindec", ["estados", "ufs", "sindecs", "LinkID"]),
     ...mapGetters({
       getById: "sindec/getById"
     })
+  },
+  created() {
+    // console.log();
   },
   mounted() {
     this.editObject = JSON.parse(
@@ -109,7 +106,9 @@ export default {
   methods: {
     ...mapActions({
       updateSindec: "sindec/updateSindec",
-      deleteLink: "sindec/deleteLink"
+      deleteLink: "sindec/deleteLink",
+      // addLink: "sindec/addLink",
+      incrementLinkID: "sindec/incrementLinkID"
     }),
     handleUpdate() {
       this.updateSindec(this.editObject);
@@ -120,6 +119,21 @@ export default {
       this.editObject.link = this.editObject.link.filter(li => {
         return li.LinkID !== linkID;
       });
+    },
+    handleAddLink() {
+      if ("" === this.newLink) {
+        alert("Favor preencher o campo com um link válido");
+        return;
+      }
+      this.incrementLinkID();
+      this.editObject.link.push({
+        LinkID: this.LinkID,
+        Link: this.newLink,
+        Active: true
+      });
+
+      this.newLink = "";
+      // this.addLink({ newLink: this.newLink, editObject: this.editObject });
     }
   }
 };

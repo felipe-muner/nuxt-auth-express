@@ -1,6 +1,6 @@
 <template>
   <v-flex xs12 sm12 md12>
-    {{sindecs}}
+    {{this.$store.state}}
     <v-data-table
       dense
       v-model="selected"
