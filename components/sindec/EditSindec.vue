@@ -15,12 +15,7 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    printItem() {}
-  },
-  mounted() {
-    console.log(this.$router);
-    console.log(this.item.SindecID);
-  }
+  methods: {},
+  mounted() {}
 };
 </script>

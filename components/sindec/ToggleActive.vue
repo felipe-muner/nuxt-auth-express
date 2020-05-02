@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-switch :value="link.Active" class="mx-2" @click.native="toggleActivity(item, link)"></v-switch>
+    <v-switch class="mx-2" :input-value="link.Active" @click.native="toggleActivity({item, link})"></v-switch>
   </div>
 </template>
 

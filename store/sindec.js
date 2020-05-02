@@ -80,14 +80,10 @@ export const mutations = {
     state.sindecs.push(payload);
   },
   toggleActivity(state, payload) {
-    console.log("123");
-    // for (let i = 0; i < state.sindecs.length; i++) {
-    //   for (let j = 0; j < state.sindecs[i].link.length; j++) {
-    //     if (state.sindecs[i].link[j].LinkID === payload.link.LinkID) {
-    //       state.sindecs[i].link[j].Active = !state.sindecs[i].link[j].Active;
-    //     }
-    //   }
-    // }
+    state.sindecs.forEach(sinde => {
+      let link = sinde.link.find(s => s.LinkID === payload.link.LinkID);
+      if (link) link.Active = !link.Active;
+    });
   },
   deleteSindec(state, payload) {
     state.sindecs = state.sindecs.filter(s => s.SindecID !== payload.SindecID);

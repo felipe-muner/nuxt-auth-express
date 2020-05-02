@@ -37,6 +37,23 @@
             ></v-autocomplete>
           </v-col>
         </v-row>
+        <v-row>
+          <v-col cols="11">
+            <v-text-field
+              v-model="newLink"
+              :rules="[v => !!v || 'Item is required']"
+              label="New Link"
+              required
+              dense
+              outlined
+            ></v-text-field>
+          </v-col>
+          <v-col cols="1" class="pl-0">
+            <v-btn color="success" dark x-small fab @click="addLink()">
+              <v-icon dark>mdi-playlist-plus</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
         <div v-for="l in editObject.link" :key="l.LinkID">
           <v-row>
             <v-col cols="11">
