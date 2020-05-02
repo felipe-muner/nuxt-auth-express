@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt-link to="/sindec/3">
+    <nuxt-link :to="{ name: 'sindec-id', params: { id: this.item.SindecID }}">
       <v-btn class="mx-2" fab dark small color="warning">
         <v-icon dark>mdi-pencil</v-icon>
       </v-btn>
@@ -9,8 +9,18 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from "vuex";
+export default {
+  props: ["item"],
+  data() {
+    return {};
+  },
+  methods: {
+    printItem() {}
+  },
+  mounted() {
+    console.log(this.$router);
+    console.log(this.item.SindecID);
+  }
+};
 </script>
-
-<style>
-</style>

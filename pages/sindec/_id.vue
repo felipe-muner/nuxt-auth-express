@@ -97,6 +97,12 @@ export default {
     handleUpdate() {
       this.updateSindec(this.editObject);
       this.$router.push({ name: "sindec" });
+    },
+    handleDeleteLink(linkID) {
+      this.deleteLink(linkID);
+      this.editObject.link = this.editObject.link.filter(li => {
+        return li.LinkID !== linkID;
+      });
     }
   }
 };
