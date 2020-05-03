@@ -9,7 +9,13 @@
       v-if="$auth.loggedIn"
     >
       <v-list>
-        <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -29,14 +35,16 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <nuxt-link to="/admin">
-        <v-btn class="ml-5" color="info" v-if="$auth.user && $auth.user.UserID === 1">Admin Area</v-btn>
+        <v-btn
+          class="ml-5"
+          color="info"
+          v-if="$auth.user && $auth.user.UserID === 1"
+          >Admin Area</v-btn
+        >
       </nuxt-link>
       <v-spacer />
       <div v-if="$auth.loggedIn">
-        <v-btn icon>
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
-        <v-btn color="error" @click="$auth.logout()">Logout</v-btn>
+        <MenuLoggedInfo />
       </div>
       <div v-else>
         <nuxt-link to="/login">
@@ -62,10 +70,12 @@
 
 <script>
 import SnackBarLogin from "~/components/SnackBarLogin";
+import MenuLoggedInfo from "~/components/MenuLoggedInfo";
 
 export default {
   components: {
-    SnackBarLogin
+    SnackBarLogin,
+    MenuLoggedInfo
   },
   data() {
     return {
