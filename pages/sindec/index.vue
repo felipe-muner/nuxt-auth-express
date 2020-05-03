@@ -1,6 +1,20 @@
 <template>
   <v-flex xs12 sm12 md12>
-    {{this.$store.state}}
+    <h1>{{ $t("welcome") }}</h1>
+
+    <nuxt-link v-if="$i18n.locale !== 'en'" :to="switchLocalePath('en')">
+      English
+    </nuxt-link>
+
+    <nuxt-link v-if="$i18n.locale !== 'es'" :to="switchLocalePath('es')">
+      Español
+    </nuxt-link>
+
+    <nuxt-link v-if="$i18n.locale !== 'fr'" :to="switchLocalePath('fr')">
+      Francês
+    </nuxt-link>
+    <hr />
+
     <v-data-table
       dense
       v-model="selected"
@@ -13,7 +27,7 @@
       <template v-slot:top>
         <FormSindec />
       </template>
-      <template v-slot:header.data-table-select="{props,on}">
+      <template v-slot:header.data-table-select="{ props, on }">
         <v-simple-checkbox
           color="primary"
           v-model="props.value"
@@ -27,15 +41,22 @@
             <td>
               <v-checkbox v-model="selected" :value="item"></v-checkbox>
             </td>
-            <td>{{ item.estado.nome}}</td>
+            <td>{{ item.estado.nome }}</td>
             <td>{{ item.uf.nome }}</td>
             <td>
               <v-container fill-height fluid class="pa-0">
-                <v-row align="center" justify="center" v-for="link in item.link" :key="link.LinkID">
+                <v-row
+                  align="center"
+                  justify="center"
+                  v-for="link in item.link"
+                  :key="link.LinkID"
+                >
                   <v-col class="pa-0" cols="1">
                     <ToggleActive :item="item" :link="link" />
                   </v-col>
-                  <v-col cols="11" align="left" justify="left">{{ link.Link }}</v-col>
+                  <v-col cols="11" align="left" justify="left">{{
+                    link.Link
+                  }}</v-col>
                 </v-row>
               </v-container>
             </td>
@@ -108,7 +129,10 @@ export default {
       ]
     };
   },
-  mounted() {}
+  mounted() {
+    console.log(this.$router);
+    console.log(this.$i18n);
+  }
 };
 </script>
 <style scoped>

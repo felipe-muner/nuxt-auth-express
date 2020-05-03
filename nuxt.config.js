@@ -42,8 +42,27 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
-    "@nuxtjs/auth"
+    "@nuxtjs/auth",
+    "nuxt-i18n"
   ],
+  i18n: {
+    locales: ["en", "fr", "es"],
+    defaultLocale: "en",
+    vueI18n: {
+      fallbackLocale: "en",
+      messages: {
+        en: {
+          welcome: "Welcome"
+        },
+        fr: {
+          welcome: "Bienvenue"
+        },
+        es: {
+          welcome: "Bienvenido"
+        }
+      }
+    }
+  },
   auth: {
     strategies: {
       local: {

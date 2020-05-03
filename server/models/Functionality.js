@@ -1,10 +1,10 @@
 const bcrypt = require("bcrypt");
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    "User",
+  const Functionality = sequelize.define(
+    "Functionality",
     {
-      userID: {
+      functionalityID: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -27,25 +27,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       freezeTableName: true,
-      timestamps: false,
-      hooks: {
-        beforeCreate: async user => {
-          const hashPass = await bcrypt.hash(user.password, 10);
-          user.password = hashPass;
-        }
-      }
+      timestamps: false
     }
   );
 
-  User.prototype.comparePassword = async function(password) {
-    return await bcrypt.compare(password, this.password);
-  };
-
-  User.prototype.toJSON = function() {
-    var values = Object.assign({}, this.get());
-    delete values.password;
-    return values;
-  };
-
-  return User;
+  return Functionality;
 };

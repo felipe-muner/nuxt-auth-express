@@ -13,11 +13,11 @@ function jwtSignUser(user) {
 module.exports = {
   async recoverPassword(req, res) {
     try {
-      const isUser = await User.findOne({ where: { Email: req.body.Email } });
+      const isUser = await User.findOne({ where: { email: req.body.email } });
       if (isUser) {
         console.log(isUser);
         // send e-mail
-        EmailController.recoverPassword(req.body.Email);
+        EmailController.recoverPassword(req.body.email);
         res.send({
           isUser: isUser,
           msg: "We sent an e-mail to you. Check it there."
@@ -48,7 +48,7 @@ module.exports = {
   async register(req, res) {
     try {
       const [user, created] = await User.findOrCreate({
-        where: { Email: req.body.Email },
+        where: { email: req.body.email },
         defaults: req.body
       });
       const userJson = user.toJSON();
@@ -81,8 +81,8 @@ module.exports = {
 
   async login(req, res) {
     try {
-      const { Email, Password } = req.body;
-      const user = await User.findOne({ where: { Email } });
+      const { email, password } = req.body;
+      const user = await User.findOne({ where: { email } });
 
       if (!user) {
         return res.status(403).send({
@@ -90,7 +90,7 @@ module.exports = {
         });
       }
 
-      const isPasswordValid = await user.comparePassword(Password);
+      const isPasswordValid = await user.comparePassword(password);
       if (!isPasswordValid) return res.status(401).send({ token: null });
 
       const userJson = user.toJSON();

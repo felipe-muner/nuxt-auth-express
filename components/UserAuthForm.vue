@@ -1,20 +1,15 @@
 <template>
   <v-form v-model="valid">
-    <v-text-field
-      v-model="userInfo.Name"
-      label="Name"
-      :rules="[required('name')]"
-      v-if="hasName"
-    />
+    <v-text-field v-model="userInfo.name" label="Name" :rules="[required('name')]" v-if="hasName" />
 
     <v-text-field
-      v-model="userInfo.Email"
+      v-model="userInfo.email"
       label="Email"
       :rules="[required('email'), emailFormat()]"
     />
 
     <v-text-field
-      v-model="userInfo.Password"
+      v-model="userInfo.password"
       label="Password"
       :type="showPassword ? 'text' : 'password'"
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -23,9 +18,11 @@
       :rules="[required('password'), minLength('password', 8)]"
     />
 
-    <v-btn @click="submitForm(userInfo)" :disabled="!valid">{{
+    <v-btn @click="submitForm(userInfo)" :disabled="!valid">
+      {{
       buttonText
-    }}</v-btn>
+      }}
+    </v-btn>
   </v-form>
 </template>
 
@@ -37,8 +34,8 @@ export default {
       valid: false,
       showPassword: false,
       userInfo: {
-        Email: "felipe.muner@gmail.com",
-        Password: "12345678"
+        email: "felipe.muner@gmail.com",
+        password: "12345678"
       },
       ...validations
     };
