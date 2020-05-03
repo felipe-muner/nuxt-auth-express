@@ -84,10 +84,6 @@ export default {
     // })  NO USE
   },
   methods: {
-    changeActivity(item, linkId) {
-      console.log(item, linkId);
-      console.log("to aqui");
-    }
     // ...mapActions({
     //   toggleActivity: "sindec/toggleActivity"
     // })
