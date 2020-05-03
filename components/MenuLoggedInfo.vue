@@ -9,7 +9,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn color="blue darken-2" dark fab small v-on="on">
-          <v-icon v-on="on">mdi-menu</v-icon>
+          <v-icon>mdi-menu</v-icon>
         </v-btn>
 
         <!-- <v-btn color="indigo" dark v-on="on"> </v-btn> -->

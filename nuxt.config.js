@@ -52,18 +52,9 @@ export default {
     vueI18n: {
       fallbackLocale: "en",
       messages: {
-        en: {
-          welcome: "Welcome",
-          nome: "felipe ingles"
-        },
-        fr: {
-          welcome: "Bienvenue",
-          nome: "felipe frances"
-        },
-        es: {
-          welcome: "Bienvenido",
-          nome: "felipe espanhol"
-        }
+        en: require("./locales/en.json"),
+        fr: require("./locales/fr.json"),
+        es: require("./locales/es.json")
       }
     }
   },
