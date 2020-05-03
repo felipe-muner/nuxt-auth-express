@@ -46,19 +46,23 @@ export default {
     "nuxt-i18n"
   ],
   i18n: {
+    strategy: "no_prefix",
     locales: ["en", "fr", "es"],
     defaultLocale: "en",
     vueI18n: {
       fallbackLocale: "en",
       messages: {
         en: {
-          welcome: "Welcome"
+          welcome: "Welcome",
+          nome: "felipe ingles"
         },
         fr: {
-          welcome: "Bienvenue"
+          welcome: "Bienvenue",
+          nome: "felipe frances"
         },
         es: {
-          welcome: "Bienvenido"
+          welcome: "Bienvenido",
+          nome: "felipe espanhol"
         }
       }
     }

@@ -1,20 +1,6 @@
 <template>
   <v-flex xs12 sm12 md12>
-    <h1>{{ $t("welcome") }}</h1>
-
-    <nuxt-link v-if="$i18n.locale !== 'en'" :to="switchLocalePath('en')">
-      English
-    </nuxt-link>
-
-    <nuxt-link v-if="$i18n.locale !== 'es'" :to="switchLocalePath('es')">
-      Español
-    </nuxt-link>
-
-    <nuxt-link v-if="$i18n.locale !== 'fr'" :to="switchLocalePath('fr')">
-      Francês
-    </nuxt-link>
-    <hr />
-
+    {{ $t("welcome") }} | {{ $t("nome") }}
     <v-data-table
       dense
       v-model="selected"
@@ -131,7 +117,11 @@ export default {
   },
   mounted() {
     console.log(this.$router);
+    console.log(this.$store);
     console.log(this.$i18n);
+    setTimeout(() => {
+      this.$i18n.setLocale("fr");
+    }, 3000);
   }
 };
 </script>
