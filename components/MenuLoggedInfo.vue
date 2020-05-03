@@ -40,7 +40,7 @@
               src="~/static/usa-flag.png"
               height="50px"
               width="50px"
-              @click="changeLanguage('us')"
+              @click="changeLanguage('en')"
             />
             <img
               src="~/static/spain-flag.png"
