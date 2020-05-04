@@ -1,13 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
-  const UserProfile = sequelize.define(
-    "UserProfile",
+  const UserAccessControl = sequelize.define(
+    "UserAccessControl",
     {
-      userProfileId: {
+      userAccessControlID: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
       },
-      name: {
+      user_id: {
+        type: DataTypes.INTEGER
+        //change estrangeira
+      },
+      system_id: {
+        type: DataTypes.INTEGER
+        //change estrangeira
+      },
+      profile_id: {
+        type: DataTypes.INTEGER
+      },
+      menuOption: {
         type: DataTypes.STRING
       }
     },
@@ -27,5 +38,5 @@ module.exports = (sequelize, DataTypes) => {
   //   return values;
   // };
 
-  return UserProfile;
+  return UserAccessControl;
 };

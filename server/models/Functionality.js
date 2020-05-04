@@ -9,17 +9,24 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         primaryKey: true
       },
+      father_id: {
+        type: DataTypes.INTEGER
+      },
       name: {
         type: DataTypes.STRING
       },
-      dateOfBirth: {
-        type: DataTypes.DATE
+      action: {
+        type: DataTypes.STRING
       },
-      email: {
-        type: DataTypes.STRING,
-        unique: true
+      icon: {
+        type: DataTypes.STRING
       },
-      password: DataTypes.STRING,
+      system_id: {
+        type: DataTypes.STRING
+      },
+      priority: {
+        type: DataTypes.INTEGER
+      },
       active: {
         type: DataTypes.BOOLEAN,
         defaultValue: 1
