@@ -1,18 +1,33 @@
 "use strict";
+
+const bcrypt = require("bcrypt");
+
 module.exports = (sequelize, DataTypes) => {
   const Functionality = sequelize.define(
     "Functionality",
     {
-      userID: DataTypes.INTEGER,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
+      functionalityID: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
+      father_ID: DataTypes.STRING,
       name: DataTypes.STRING,
-      dateOfBirth: DataTypes.DATE
+      action: DataTypes.STRING,
+      icon: DataTypes.STRING,
+      system_ID: DataTypes.INTEGER,
+      priority: DataTypes.INTEGER,
+      active: DataTypes.BOOLEAN
     },
-    { timestamps: false }
+    {
+      timestamps: false,
+      freezeTableName: true
+    }
   );
   Functionality.associate = function(models) {
     // associations can be defined here
   };
+
   return Functionality;
 };
