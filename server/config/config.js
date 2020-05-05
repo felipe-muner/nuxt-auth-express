@@ -1,17 +1,24 @@
-const path = require("path");
-
+require("dotenv").config(); // this is important!
 module.exports = {
-  port: process.env.PORT,
-  db: {
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
+  development: {
+    username: process.env.DB_USER,
     password: process.env.DB_PASS,
-    options: {
-      dialect: process.env.DIALECT,
-      host: process.env.HOST
-    }
+    database: process.env.DB_NAME,
+    host: process.env.HOST,
+    dialect: "mysql"
   },
-  authentication: {
-    jwtSecret: process.env.JWT_SECRET
+  test: {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.HOST,
+    dialect: "mysql"
+  },
+  production: {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.HOST,
+    dialect: "mysql"
   }
 };

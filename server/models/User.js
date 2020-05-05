@@ -1,51 +1,26 @@
-const bcrypt = require("bcrypt");
-
+"use strict";
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     "User",
     {
       userID: {
-        type: DataTypes.INTEGER,
+        allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        primaryKey: true,
+        type: DataTypes.INTEGER
       },
-      name: {
-        type: DataTypes.STRING
-      },
-      dateOfBirth: {
-        type: DataTypes.DATE
-      },
-      email: {
-        type: DataTypes.STRING,
-        unique: true
-      },
+      email: DataTypes.STRING,
       password: DataTypes.STRING,
-      active: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: 1
-      }
+      name: DataTypes.STRING,
+      dateOfBirth: DataTypes.DATE
     },
     {
-      freezeTableName: true,
       timestamps: false,
-      hooks: {
-        beforeCreate: async user => {
-          const hashPass = await bcrypt.hash(user.password, 10);
-          user.password = hashPass;
-        }
-      }
+      freezeTableName: true
     }
   );
-
-  User.prototype.comparePassword = async function(password) {
-    return await bcrypt.compare(password, this.password);
+  User.associate = function(models) {
+    // associations can be defined here
   };
-
-  User.prototype.toJSON = function() {
-    var values = Object.assign({}, this.get());
-    delete values.password;
-    return values;
-  };
-
   return User;
 };

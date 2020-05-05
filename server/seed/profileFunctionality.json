@@ -1,43 +1,43 @@
 [
   {
     "profile_id": 1,
-    "functionality": 1,
-    "canIsert": true,
+    "functionality_id": 1,
+    "canInsert": true,
     "canUpdate": true,
     "canDelete": true
   },
   {
     "profile_id": 1,
-    "functionality": 2,
-    "canIsert": true,
+    "functionality_id": 2,
+    "canInsert": true,
     "canUpdate": true,
     "canDelete": true
   },
   {
     "profile_id": 1,
-    "functionality": 3,
-    "canIsert": true,
+    "functionality_id": 3,
+    "canInsert": true,
     "canUpdate": true,
     "canDelete": true
   },
   {
     "profile_id": 1,
-    "functionality": 4,
-    "canIsert": true,
+    "functionality_id": 4,
+    "canInsert": true,
     "canUpdate": true,
     "canDelete": true
   },
   {
     "profile_id": 1,
-    "functionality": 5,
-    "canIsert": true,
+    "functionality_id": 5,
+    "canInsert": true,
     "canUpdate": true,
     "canDelete": true
   },
   {
     "profile_id": 1,
-    "functionality": 6,
-    "canIsert": true,
+    "functionality_id": 6,
+    "canInsert": true,
     "canUpdate": true,
     "canDelete": true
   }
