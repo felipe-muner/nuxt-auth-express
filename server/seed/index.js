@@ -18,11 +18,13 @@ const userAccessControl = require("./userAccessControl");
 
 sequelize.sync({ force: true }).then(async () => {
   await users.map(user => User.create(user));
-  await system.map(s => System.create(s));
-  await systemProfile.map(sp => SystemProfile.create(sp));
-  await functionality.map(f => Functionality.create(f));
-  await profileFunctionality.map(pf => ProfileFunctionality.create(pf));
-  await userAccessControl.map(uac => UserAccessControl.create(uac));
+  setTimeout(async () => {
+    await system.map(s => System.create(s));
+    await systemProfile.map(sp => SystemProfile.create(sp));
+    await functionality.map(f => Functionality.create(f));
+    await profileFunctionality.map(pf => ProfileFunctionality.create(pf));
+    await userAccessControl.map(uac => UserAccessControl.create(uac));
+  }, 300);
 });
 
 // try {
