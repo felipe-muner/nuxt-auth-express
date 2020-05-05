@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       canInsert: {
         type: DataTypes.BOOLEAN
       },
-      canEdit: {
+      canUpdate: {
         type: DataTypes.BOOLEAN
       },
       canDelete: {

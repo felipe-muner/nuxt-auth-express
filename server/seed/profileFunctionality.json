@@ -1,0 +1,44 @@
+[
+  {
+    "profile_id": 1,
+    "functionality": 1,
+    "canIsert": true,
+    "canUpdate": true,
+    "canDelete": true
+  },
+  {
+    "profile_id": 1,
+    "functionality": 2,
+    "canIsert": true,
+    "canUpdate": true,
+    "canDelete": true
+  },
+  {
+    "profile_id": 1,
+    "functionality": 3,
+    "canIsert": true,
+    "canUpdate": true,
+    "canDelete": true
+  },
+  {
+    "profile_id": 1,
+    "functionality": 4,
+    "canIsert": true,
+    "canUpdate": true,
+    "canDelete": true
+  },
+  {
+    "profile_id": 1,
+    "functionality": 5,
+    "canIsert": true,
+    "canUpdate": true,
+    "canDelete": true
+  },
+  {
+    "profile_id": 1,
+    "functionality": 6,
+    "canIsert": true,
+    "canUpdate": true,
+    "canDelete": true
+  }
+]

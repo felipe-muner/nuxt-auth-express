@@ -1,8 +1,6 @@
-const bcrypt = require("bcrypt");
-
 module.exports = (sequelize, DataTypes) => {
-  const Systems = sequelize.define(
-    "Systems",
+  const System = sequelize.define(
+    "System",
     {
       systemsID: {
         type: DataTypes.INTEGER,
@@ -19,5 +17,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return Systems;
+  return System;
 };

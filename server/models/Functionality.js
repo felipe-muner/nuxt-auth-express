@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       system_id: {
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER
       },
       priority: {
         type: DataTypes.INTEGER
