@@ -69,12 +69,11 @@ module.exports = {
       );
 
       if (decoded) {
-        console.log("entrei aqui if");
-        return res.send(decoded);
+        return res.send({ user: decoded });
       }
     } catch (error) {
       return res.status(401).send({
-        error,
+        error: error.message,
         token: null,
         msg: "Invalid token."
       });
