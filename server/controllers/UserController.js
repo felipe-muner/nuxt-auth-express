@@ -61,7 +61,7 @@ module.exports = {
     }
   },
 
-  verifyUser(req, res) {
+  getUser(req, res) {
     try {
       jwt.verify(
         req.headers.authorization.split(" ")[1],
