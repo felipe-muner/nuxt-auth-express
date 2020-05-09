@@ -24,7 +24,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Functionality.associate = function(models) {
-    // associations can be defined here
+    Functionality.hasMany(models.ProfileFunctionality, {
+      foreignKey: "functionality_ID",
+      sourceKey: "functionalityID"
+    });
+    Functionality.hasMany(models.Functionality, {
+      foreignKey: "father_ID",
+      sourceKey: "functionalityID",
+      as: "FunctionalityChildren"
+    });
+    Functionality.belongsTo(models.System, {
+      foreignKey: "system_ID",
+      targetKey: "systemID"
+    });
+    Functionality.belongsTo(models.Functionality, {
+      foreignKey: "father_ID",
+      targetKey: "functionalityID",
+      as: "FunctionalityFather"
+    });
   };
 
   return Functionality;
