@@ -18,7 +18,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       menuOption: {
-        type: Sequelize.BOOLEAN
+        type: DataTypes.STRING,
+        defaultValue: '{"drawer": true, "miniVariant": false, "clipped": false}'
       }
     });
   },

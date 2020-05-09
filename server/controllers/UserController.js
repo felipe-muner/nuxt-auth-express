@@ -1,5 +1,7 @@
 const { User } = require("../models");
 const EmailController = require("./EmailController");
+const UserAccessControl = require("./UserAccessController");
+
 const jwt = require("jsonwebtoken");
 
 function jwtSignUser(user) {
@@ -69,7 +71,8 @@ module.exports = {
       );
 
       if (decoded) {
-        return res.send({ user: decoded });
+        const userProfile = await UserAccessControl.getProfile(decoded);
+        return res.send({ user: decoded, userProfile: userProfile });
       }
     } catch (error) {
       return res.status(401).send({
