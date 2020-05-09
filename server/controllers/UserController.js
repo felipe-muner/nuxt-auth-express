@@ -1,6 +1,6 @@
 const { User } = require("../models");
-const jwt = require("jsonwebtoken");
 const EmailController = require("./EmailController");
+const jwt = require("jsonwebtoken");
 
 function jwtSignUser(user) {
   const ONE_WEEK = 60 * 60 * 24 * 7;
@@ -61,17 +61,23 @@ module.exports = {
     }
   },
 
-  getUser(req, res) {
+  async getUser(req, res) {
     try {
-      jwt.verify(
+      const decoded = await jwt.verify(
         req.headers.authorization.split(" ")[1],
-        config.authentication.jwtSecret,
-        function(err, decoded) {
-          return res.send({ user: decoded });
-        }
+        process.env.JWT_SECRET
       );
+
+      if (decoded) {
+        console.log("entrei aqui if");
+        return res.send(decoded);
+      }
     } catch (error) {
-      return res.status(401).send({ error });
+      return res.status(401).send({
+        error,
+        token: null,
+        msg: "Invalid token."
+      });
     }
   },
 
