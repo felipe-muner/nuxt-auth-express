@@ -1,6 +1,7 @@
 const { User } = require("../models");
 const EmailController = require("./EmailController");
 const UserAccessControl = require("./UserAccessController");
+const pfc = require("./ProfileFunctionalityController");
 
 const jwt = require("jsonwebtoken");
 
@@ -71,8 +72,12 @@ module.exports = {
       );
 
       if (decoded) {
-        const userProfile = await UserAccessControl.getProfile(decoded);
-        return res.send({ user: decoded, userProfile: userProfile });
+        let user = decoded;
+        user.profile = await UserAccessControl.getProfile(decoded);
+        user.functionalities = await pfc.getProfileFunctionality(
+          user.profile.profile_ID
+        );
+        return res.send({ user });
       }
     } catch (error) {
       return res.status(401).send({

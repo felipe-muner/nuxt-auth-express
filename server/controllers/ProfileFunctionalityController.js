@@ -11,5 +11,14 @@ module.exports = {
       console.log("error ProfileFunctionality getall");
       res.status(400).send({ error: error });
     }
+  },
+  async getProfileFunctionality(req, res) {
+    try {
+      return [];
+    } catch (error) {
+      console.log(error);
+      console.log("error ProfileFunctionality getall");
+      res.status(400).send({ error: error });
+    }
   }
 };
