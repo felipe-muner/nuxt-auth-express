@@ -1,7 +1,5 @@
 "use strict";
 
-const bcrypt = require("bcrypt");
-
 module.exports = (sequelize, DataTypes) => {
   const Functionality = sequelize.define(
     "Functionality",
